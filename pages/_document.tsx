@@ -9,11 +9,11 @@ class GDocument extends Document {
 
     render() {
         return (
-            <Html className="dark">
+            <Html className="dark h-full">
                 <Head>
                     <meta charSet="utf-8" />
                 </Head>
-                <body className="dark:bg-zinc-900 dark:text-white">
+                <body className="h-full dark:bg-gradient-to-br dark:from-zinc-900 dark:to-black dark:text-white">
                 <Main />
                 <NextScript />
                 </body>
