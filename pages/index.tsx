@@ -9,7 +9,7 @@ export default function Home() {
 		setAnimate(true);
 	}, []);
 	return (
-		<div className={`w-full h-full brick`}>
+		<div className={`w-full h-full brick overflow-auto`}>
 			<Head>
 				<title>Gunn Elimination 2022</title>
 				<link rel="icon" href="/favicon.ico" />
@@ -25,7 +25,7 @@ export default function Home() {
 					leaveFrom="opacity-100"
 					leaveTo="opacity-0 scale-0"
 				>
-					<h1 className="font-bold text-transparent text-9xl bg-clip-text bg-gradient-to-r from-red-500 via-pink-600 to-red-500 animate-gradient-slow">
+					<h1 className="font-bold text-transparent text-9xl sm:text-7xl bg-clip-text bg-gradient-to-r from-red-500 via-pink-600 to-red-500 animate-gradient-slow">
 						Elimination
 					</h1>
 				</Transition>
@@ -53,7 +53,7 @@ export default function Home() {
 				>
 					<p className="mb-4">Play on your Gunn Application of choice:</p>
 				</Transition>
-				<section className="flex flex-wrap justify-center gap-8 pointer-events-none group">
+				<section className="flex flex-wrap justify-center pointer-events-none group">
 					<Transition
 						show={animate}
 						enter="ease-out duration-700 delay-[1800ms] transition-all"
