@@ -12,7 +12,7 @@ export default function Home() {
     <div className={`w-full h-full brick`}>
       <Head>
         <title>Gunn Elimination 2022</title>
-        <link rel="icon" href="/elimination-2022/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="pt-24 text-center">
@@ -67,8 +67,8 @@ export default function Home() {
             <AppCard
               name="Disadus"
               href="https://disadus.app"
-              icon="/elimination-2022/apps/disadus.png"
-              img="/elimination-2022/apps/disadus-dark.png"
+              icon="/apps/disadus.png"
+              img="/apps/disadus-dark.png"
             >
               Have you heard of Disadus?
             </AppCard>
@@ -86,8 +86,8 @@ export default function Home() {
             <AppCard
               name="WATT"
               href="https://gunn.app"
-              icon="/elimination-2022/apps/watt.png"
-              img="/elimination-2022/apps/disadus-dark.png"
+              icon="/apps/watt.png"
+              img="/apps/disadus-dark.png"
             >
               WATT is pretty cool. Use it!
             </AppCard>
@@ -105,8 +105,8 @@ export default function Home() {
             <AppCard
               name="Gunn.one"
               href="https://gunn.one"
-              icon="/elimination-2022/apps/gunn-one.svg"
-              img="/elimination-2022/apps/disadus-dark.png"
+              icon="/apps/gunn-one.svg"
+              img="/apps/disadus-dark.png"
             >
               Gunn.one. It's got one in the name!
             </AppCard>
