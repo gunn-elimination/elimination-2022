@@ -16,7 +16,7 @@ export default function Home() {
         <div className="w-full h-full brick overflow-auto">
             <Head>
                 <title>Gunn Elimination 2022</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon.png" />
             </Head>
 
             <main className="pt-24 text-center">
