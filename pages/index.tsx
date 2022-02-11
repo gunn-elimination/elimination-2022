@@ -14,10 +14,7 @@ export default function Home() {
 
     return (
         <div className="w-full h-full brick overflow-auto">
-            <Head>
-                <title>Gunn Elimination 2022</title>
-                <link rel="icon" href="/favicon.png" />
-            </Head>
+
 
             <main className="pt-24 text-center">
                 <Transition
@@ -57,7 +54,7 @@ export default function Home() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0 scale-0"
                     >
-                        <button className="px-4 py-2 font-bold text-white transition transition-shadow duration-100 ease-in-out rounded-md shadow-lg bg-gradient-to-br from-red-500 via-red-500 to-pink-600 shadow-red-700/40 hover:shadow-xl hover:shadow-red-700/40">
+                        <button className="btn-primary">
                             Sign up
                         </button>
                     </Transition>
