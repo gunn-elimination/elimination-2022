@@ -65,7 +65,9 @@ export default function Signup(){
                 <div className="flex flex-row gap-3"><TextBox className="w-full" placeholder="First Name" onInput={(v)=>{setFirstName(v.target.value)}} />
                 <TextBox className="w-full"  placeholder="Last Name" onInput={(v)=>{setLastName(v.target.value)}} /></div>
                 <TextBox className="w-full" type="email" placeholder="Email" onInput={(v)=>{setEmail(v.target.value)}} />
+
                 <TextBox className="w-full" placeholder="Password" onInput={(v: { target: HTMLInputElement; })=>{setPassword((v.target as HTMLInputElement).value)}} type="password"/>
+
                 <TextBox className="w-full" placeholder="Confirm Password" onInput={(v)=>{setPassword2(v.target.value)}} type="password"/>
                 <button onClick={submit} className="btn-primary mt-1">Sign Up</button>
             </div>
