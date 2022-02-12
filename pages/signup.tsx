@@ -36,7 +36,7 @@ export default function Signup(){
                 }
             }
         }
-        return setError({
+        setError({
             valid: false,
             message: ``
         })
