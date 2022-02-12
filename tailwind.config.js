@@ -1,3 +1,4 @@
+const colors = require('tailwindcss/colors')
 module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
@@ -21,6 +22,9 @@ module.exports = {
                     },
                 },
             },
+            colors:{
+                gray: colors.zinc
+            }
         },
         screens: {
             inf: { max: "99999999px" },
