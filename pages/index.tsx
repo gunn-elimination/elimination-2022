@@ -54,9 +54,9 @@ export default function Home() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0 scale-0"
                     >
-                        <button className="btn-primary">
+                        <a href="/signup" className="btn-primary">
                             Sign up
-                        </button>
+                        </a>
                     </Transition>
 
                     <Transition
