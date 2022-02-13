@@ -13,7 +13,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="w-full h-full brick overflow-auto">
+        <div className="w-full h-full px-5 brick overflow-auto">
 
 
             <main className="pt-24 text-center">
@@ -26,7 +26,7 @@ export default function Home() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0 scale-0"
                 >
-                    <h1 className="font-bold text-transparent text-9xl sm:text-7xl bg-clip-text bg-gradient-to-r from-red-500 via-pink-600 to-red-500 animate-gradient-slow">
+                    <h1 className="font-bold text-transparent mb-1 md:text-5xl text-9xl bg-clip-text bg-gradient-to-r from-red-500 via-pink-600 to-red-500 animate-gradient-slow">
                         Elimination
                     </h1>
                 </Transition>
@@ -39,7 +39,7 @@ export default function Home() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <p className="mb-6 text-lg">
+                    <p className="mb-6 md:text-base text-lg">
                         Welcome to Gunn Elimination, 2022. It's kill or be killed.
                     </p>
                 </Transition>
