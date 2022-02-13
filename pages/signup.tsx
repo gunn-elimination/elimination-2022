@@ -46,8 +46,8 @@ export default function Signup() {
   }, [email, password, password2, firstName, lastName]);
   return (
     <div className="dark:bg-gray-500 w-full h-full">
-      <div className="w-full bg-gradient-to-br bg-brand flex h-full">
-        <div className=" bg-white/70 dark:bg-black/70 my-auto grow max-w-sm mx-auto rounded-xl">
+      <div className="w-full bg-gradient-to-br bg-brand flex px-5 h-full">
+        <div className=" bg-white/70 dark:bg-black/70 my-auto grow md:max-w-sm max-w-xs mx-auto rounded-xl">
           <div className=" flex gap-3 flex-col rounded-xl py-6 px-5 dark:bg-white/10 bg-gray-500/10">
             {error.valid && <ErrorAlert message={error.message} />}
 
