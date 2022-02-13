@@ -51,10 +51,10 @@ export default function Signup(){
         })
     },[email, password, password2, firstName, lastName]);
     return (
-        <div className="w-full flex h-full">
-            <div className="my-auto grow max-w-lg mx-auto flex gap-3 flex-col max-w- rounded-xl py-6 px-5 dark:bg-white/10 bg-gray-700/20">
-                
-                
+        <div className="dark:bg-gray-500 w-full h-full">
+        <div className="w-full bg-gradient-to-br bg-brand flex h-full">
+            <div className=" bg-white/70 dark:bg-black/70 my-auto grow max-w-sm mx-auto rounded-xl">
+            <div className=" flex gap-3 flex-col rounded-xl py-6 px-5 dark:bg-white/10 bg-gray-500/10">
                 
                 {
                     error.valid && (<div className="rounded-md text-red-500 bg-red-500/20 py-2 px-3">
@@ -70,7 +70,10 @@ export default function Signup(){
 
                 <TextBox className="w-full" placeholder="Confirm Password" onInput={(v)=>{setPassword2((v.target as HTMLInputElement).value)}} type="password"/>
                 <button onClick={submit} className="btn-primary mt-1">Sign Up</button>
+                <span className="dark:text-white/60 text-black/60 italic text-sm">Already have an account?  <a className="link-brand" href="/login">Login.</a></span>
             </div>
+            </div>
+        </div>
         </div>
     )
 }

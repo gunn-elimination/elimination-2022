@@ -19,3 +19,11 @@
 .btn-primary {
   @apply px-4 py-2 font-bold text-white transition transition-shadow duration-100 ease-in-out rounded-md shadow-lg bg-gradient-to-br from-red-500 via-red-500 to-pink-600 shadow-red-700/40 hover:shadow-xl hover:shadow-red-700/40;
 }
+
+.bg-brand {
+  @apply bg-gradient-to-br from-orange-500/80 via-red-500/80  to-rose-500/80;
+}
+
+.link-brand {
+  @apply  bg-clip-text font-bold text-transparent bg-gradient-to-r from-red-500 to-rose-500
+}

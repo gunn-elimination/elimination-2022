@@ -68,7 +68,7 @@ export default function Home() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0 scale-0"
                     >
-                        <a>Log in</a>
+                        <a href="/login">Log in</a>
                     </Transition>
                 </div>
 
