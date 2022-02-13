@@ -7,7 +7,6 @@ import ThemeButton from '../components/themeButton';
 export default function MyApp({Component, pageProps}: AppProps) {
     useEffect(()=>{
         const darkMode = JSON.parse(''+localStorage.getItem('gunnelimination:darkMode')) || (!('gunnelimination:darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        console.log(darkMode)
         document.body.parentElement?.classList.toggle('dark', darkMode)
     })
     
