@@ -29,6 +29,7 @@ export default function Login() {
         email,
         password,
       }),
+      headers: new Headers({'content-type': 'application/json'}),
       method: "post",
     });
   }, [email, password]);

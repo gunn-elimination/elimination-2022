@@ -45,6 +45,7 @@ export default function Signup() {
       headers: new Headers({'content-type': 'application/json'}),
       method: "post",
     });
+    console.log(response.status, await response.text())
   }, [email, password, password2, firstName, lastName]);
   return (
     <div className="dark:bg-gray-500 w-full h-full">
