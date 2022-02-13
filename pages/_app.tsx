@@ -17,7 +17,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     },[])
     return (
         <>
-        <button onClick={toggleTheme} className='absolute py-2 px-2 dark:hover:bg-black/20 rounded-lg hover:bg-white/20 top-2 right-2'>
+        <button onClick={toggleTheme} className='absolute py-2 px-2  hover:bg-rose-500/50 rounded-full  top-2 right-2'>
             <ThemeButton/>
         </button>
             <Head>
