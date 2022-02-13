@@ -40,6 +40,7 @@ export default function Signup() {
         password,
         firstName,
         lastName,
+        redirectURL: "https://gunnelimination.com/app"
       }),
       method: "post",
     });
