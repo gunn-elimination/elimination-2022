@@ -1,4 +1,5 @@
 import {useState, useCallback} from "react";
+import ErrorAlert from "../components/ErrorAlert";
 import TextBox from "../components/textbox";
 
 
@@ -57,9 +58,7 @@ export default function Signup(){
             <div className=" flex gap-3 flex-col rounded-xl py-6 px-5 dark:bg-white/10 bg-gray-500/10">
                 
                 {
-                    error.valid && (<div className="rounded-md text-red-500 bg-red-500/20 py-2 px-3">
-                        {error.message}
-                    </div>)
+                    error.valid && <ErrorAlert message={error.message} />
                 }
 
                 <div className="flex flex-row gap-3"><TextBox className="w-full" placeholder="First Name" onInput={(v)=>{setFirstName((v.target as HTMLInputElement).value)}} />
