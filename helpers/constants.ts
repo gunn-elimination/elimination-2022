@@ -1,0 +1,1 @@
+export const API_Domain = 'https://api.gunnelimination.com';
