@@ -40,6 +40,7 @@ export default function Signup() {
         password,
         firstName,
         lastName,
+        createdBy: "Standalone",
         redirectURL: "https://gunnelimination.com/app"
       }),
       headers: new Headers({'content-type': 'application/json'}),
