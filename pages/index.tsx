@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Transition } from '@headlessui/react';
 import AppCard from '../components/AppCard';
+import { UserContext } from '../helpers/usercontext';
 
 
 export default function Home() {
     const [animate, setAnimate] = useState(false);
-
+    const user = useContext(UserContext);
     // Is there a better way to do this?
     useEffect(() => {
         setAnimate(true);
     }, []);
+
 
     return (
         <div className="w-full h-full px-5 brick overflow-auto">
@@ -40,37 +42,51 @@ export default function Home() {
                     leaveTo="opacity-0"
                 >
                     <p className="mb-6 md:text-base text-lg">
-                        Welcome to Gunn Elimination, 2022. It's kill or be killed.
-                    </p>
+                        Welcome to Gunn Elimination, 2022. It's kill or be killed.</p>
                 </Transition>
 
-                <div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
-                    <Transition
-                        show={animate}
-                        enter="ease-out duration-500 delay-[1200ms]"
-                        enterFrom="opacity-0 scale-0 -translate-y-full"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-500"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0 scale-0"
-                    >
-                        <a href="/signup" className="btn-primary">
-                            Sign up
-                        </a>
-                    </Transition>
+                {user ? (<div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
+                <Transition
+            show={animate}
+            enter="ease-out duration-500 delay-[1200ms]"
+            enterFrom="opacity-0 scale-0 -translate-y-full"
+            enterTo="opacity-100"
+            leave="ease-in duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0 scale-0"
+        >
+            <a href="/app" className="btn-primary">
+                Play
+            </a>
+        </Transition>
+                    </div>) : <div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
+        <Transition
+            show={animate}
+            enter="ease-out duration-500 delay-[1200ms]"
+            enterFrom="opacity-0 scale-0 -translate-y-full"
+            enterTo="opacity-100"
+            leave="ease-in duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0 scale-0"
+        >
+            <a href="/signup" className="btn-primary">
+                Sign up
+            </a>
+        </Transition>
 
-                    <Transition
-                        show={animate}
-                        enter="ease-out duration-500 delay-[1200ms]"
-                        enterFrom="opacity-0 scale-0 -translate-y-full"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-500"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0 scale-0"
-                    >
-                        <a href="/login">Log in</a>
-                    </Transition>
-                </div>
+        <Transition
+            show={animate}
+            enter="ease-out duration-500 delay-[1200ms]"
+            enterFrom="opacity-0 scale-0 -translate-y-full"
+            enterTo="opacity-100"
+            leave="ease-in duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0 scale-0"
+        >
+            <a href="/login">Log in</a>
+        </Transition>
+    </div>
+}
 
                 <Transition
                     show={animate}
@@ -133,16 +149,16 @@ export default function Home() {
                         className="hoverCard"
                     >
                         <AppCard
-                            name="Gunn.one"
+                            name="Gunn.One"
                             href="https://gunn.one"
-                            icon="/apps/gunn-one.svg"
+                            icon="/apps/gunn-one.png"
                             img="/apps/disadus-dark.png"
                         >
-                            Gunn.one. It's got one in the name!
+                            Everything at Gunn, all in One!
                         </AppCard>
                     </Transition>
                 </section>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }

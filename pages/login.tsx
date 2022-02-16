@@ -1,8 +1,12 @@
-import { useState, useCallback } from "react";
+import { useRouter } from "next/router";
+import { useState, useCallback, useContext, useEffect } from "react";
 import ErrorAlert from "../components/ErrorAlert";
 import TextBox from "../components/textbox";
+import { UserContext } from "../helpers/usercontext";
 
 export default function Login() {
+  const router = useRouter()
+  const user = useContext(UserContext);
   const errors = ["email", "password"];
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +36,22 @@ export default function Login() {
       headers: new Headers({'content-type': 'application/json'}),
       method: "post",
     });
+    const responseText = await response.text();
+    if (responseText === "User not found"){
+      setError({
+        valid: true,
+        message: "It looks like you do not have an account. Have you verified your email?"
+      })
+    }
+    else if (response.status === 200){
+      localStorage.setItem('token', responseText)
+    }
   }, [email, password]);
+  useEffect(()=>{
+    if (user){
+      router.push('/app')
+    }
+  }, [user])
   return (
     <div className="dark:bg-gray-500 w-full h-full">
     <div className="w-full bg-gradient-to-br bg-brand flex px-5 h-full">
