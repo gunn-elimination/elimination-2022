@@ -41,12 +41,12 @@ export default function Index() {
   },[games])
 
   return (
-    <div className="h-full w-full bg-gray-50 flex flex-col px-10 pt-8 mb-8">
+    <div className="h-full w-full bg-gray-50 dark:bg-gray-900 overflow-auto flex flex-col px-10 py-8">
         <h1 className="text-2xl font-bold tracking-wide mb-8">Games</h1>
         <div className="flex flex-col">
             {
                 games.map((g:any)=>(
-            <div key={g.id} className="py-2 px-3 rounded-md shadow bg-white ">
+            <div key={g.id} className="py-2 px-3 rounded-md shadow dark:bg-gray-200/20 bg-white ">
                 <span className="text-lg font-bold">{g.name}</span>
                 <p className="whitespace-pre-wrap">{g.description}</p>
                 <div>
