@@ -25,7 +25,7 @@ export default function Index() {
 
   }, [])
   const joinGame = useCallback(async (gameID)=>{
-    const response = await fetch(`${API_DOMAIN}/games/${gameID}/join`, {
+    const response = await fetch(`${API_DOMAIN}/game/${gameID}/join`, {
         method: 'POST',
         headers: new Headers({
             "Content-Type": "application/json",

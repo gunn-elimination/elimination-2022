@@ -51,7 +51,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <UserContext.Provider value={user}>
       <div className="w-full flex flex-row h-full dark:bg-gray-800 ">
-      <div className="flex flex-col w-60 px-3  bg-gray-200/80">
+      <div className={`${router.route === '/' && 'hidden'} flex flex-col w-60 px-3  bg-gray-200/80`}>
         <h1 className="text-2xl font-extrabold text-center block tracking-wider my-8">Elimination</h1>
         <hr className="-mx-3 py-2 border-1 border-black/10" />
         <div className="my-4 p-1 flex flex-col gap-1">
