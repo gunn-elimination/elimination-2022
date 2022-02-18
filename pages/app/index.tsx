@@ -5,7 +5,7 @@ import { UserContext } from "../../helpers/usercontext";
 
 export default function Index() {
   const user = useContext(UserContext);
-  const [games, setGames] = useState([]);
+  const [games, setGames] = useState([] as any[]);
   useEffect(() => {
       (async function () {
           const response = await fetch(`${API_DOMAIN}/games`, {
@@ -15,7 +15,15 @@ export default function Index() {
               })
           });
           if (response.status === 200){
-            const g = await response.json()
+            const g = await Promise.all((await response.json()).map(async function (x:any){
+                x.joined = (await (await fetch(`${API_DOMAIN}/game/${x.id}/joined`, {
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    })
+                })).json()).joined;
+                return x
+            }))
             setGames(g)
           }
           else {
@@ -46,11 +54,14 @@ export default function Index() {
         <div className="flex flex-col">
             {
                 games.map((g:any)=>(
-            <div key={g.id} className="py-2 px-3 rounded-md shadow dark:bg-gray-200/20 bg-white ">
+            <div key={g.id} className="py-3 px-4 rounded-md shadow dark:bg-gray-200/20 bg-white ">
                 <span className="text-lg font-bold">{g.name}</span>
-                <p className="whitespace-pre-wrap">{g.description}</p>
+                <span></span>
+                <p className="whitespace-pre-wrap opacity-50 text-xs">{g.description}</p>
                 <div>
-                    <button onClick={()=>joinGame(g.id)} className="btn-primary !py-2 !px-3 float-right">Join</button>
+                    {g.joined?                     <a href={`/app/${g.id}`} className="btn-primary !py-2 !px-3 float-right">Open</a>
+:                     <button onClick={()=>joinGame(g.id)} className="btn-primary !py-2 !px-3 float-right">Join</button>
+}
                 </div>
             </div>))
             }
