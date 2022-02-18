@@ -49,7 +49,7 @@ export default function Index() {
   },[games])
 
   return (
-    <div className="h-full w-full bg-gray-100 dark:bg-gray-900 overflow-auto flex flex-col px-10 py-8">
+    <div className="h-full w-full  overflow-auto flex flex-col px-10 py-8">
         <h1 className="text-3xl font-bold mb-8">Games</h1>
         <div className="flex flex-col">
             {
@@ -59,7 +59,7 @@ export default function Index() {
                 <span></span>
                 <p className="whitespace-pre-wrap opacity-50 text-xs">{g.description}</p>
                 <div>
-                    {g.joined?                     <a href={`/app/${g.id}`} className="btn-primary !py-2 !px-3 float-right">Open</a>
+                    {g.joined?                     <a href={`/app/game/${g.id}`} className="btn-primary !py-2 !px-3 float-right">Open</a>
 :                     <button onClick={()=>joinGame(g.id)} className="btn-primary !py-2 !px-3 float-right">Join</button>
 }
                 </div>

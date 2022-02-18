@@ -31,3 +31,7 @@
 ::selection {
   @apply bg-rose-200/50;
 }
+
+.box {
+  @apply bg-black/10 dark:bg-white/10 text-black dark:text-white flex flex-col gap-2 rounded-lg py-4 px-5;
+}
