@@ -54,7 +54,7 @@ export default function Index() {
         <div className="flex flex-col">
             {
                 games.map((g:any)=>(
-            <div key={g.id} className="py-3 px-4 rounded-md shadow dark:bg-gray-200/20 bg-white ">
+            <div key={g.id} className="py-3 px-4 my-2 rounded-md shadow dark:bg-gray-200/20 bg-white ">
                 <span className="text-lg font-bold">{g.name}</span>
                 <span></span>
                 <p className="whitespace-pre-wrap opacity-50 text-xs">{g.description}</p>

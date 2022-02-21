@@ -45,6 +45,7 @@ export default function Login() {
     }
     else if (response.status === 200){
       localStorage.setItem('token', responseText)
+      router.push('/app')
     }
   }, [email, password]);
   useEffect(()=>{
