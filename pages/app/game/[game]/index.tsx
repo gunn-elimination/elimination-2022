@@ -1,20 +1,27 @@
 import {useRouter} from "next/router"
-import {useContext, useEffect, useState} from "react"
+import {useCallback, useContext, useEffect, useState} from "react"
 import CrossHairIcon from "../../../../components/icons/crosshair-icon";
 import Monogram from "../../../../components/Monogram";
 import {API_DOMAIN} from "../../../../helpers/constants"
 import {getUserProfile} from "../../../../helpers/fetchCache";
 import {UserContext} from "../../../../helpers/usercontext";
 import UserIcon from "../../../../components/icons/user-icon";
+import TextBox from "../../../../components/textbox";
+import ErrorAlert from "../../../../components/ErrorAlert";
+import SuccessAlert from "../../../../components/SuccessAlert";
 
 export default function Index() {
     const user = useContext(UserContext);
     const router = useRouter();
     const [page, setPage] = useState(0)
+    const [showCode, setShowCode] = useState(false)
     const [game, setGame] = useState({} as Record<string, any>);
     const [selfInfo, setSelfInfo] = useState({} as Record<string, any>)
     const [targetInfo, setTargetInfo] = useState({} as Record<string, any>)
     const [leaderboard, setLeaderboard] = useState([] as Array<Record<string, any>>);
+    const [killCode, setKillCode] = useState('')
+    const [killError, setKillError] = useState('')
+    const [killSuccess, setKillSuccess] = useState(false)
     const [killFeed, setKillFeed] = useState([] as Array<Record<string, any>>);
     useEffect(() => {
         if (!router.query.game) return;
@@ -77,6 +84,25 @@ export default function Index() {
 
 
     }, [router]);
+    const eliminateTarget = useCallback(async ()=>{
+        const response = await fetch(`${API_DOMAIN}/elimination/game/${router.query.game}/user/${targetInfo.userID}/eliminate`, {
+            headers: new Headers({
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            } as HeadersInit),
+            method:'POST',
+            body:JSON.stringify({
+                eliminationCode:killCode
+            })
+        })
+        if (response.status===200){
+            setKillError('');
+            setKillSuccess(true)
+        }
+        else {
+            setKillError((await response.json()).error)
+        }
+    }, [user, targetInfo, killCode])
     return (
         <div className="h-full w-full  overflow-auto flex flex-col px-10 pb-8 pt-12">
             <h1 className="text-3xl font-bold mb-8">{game.name}</h1>
@@ -122,11 +148,17 @@ export default function Index() {
                         <div className="flex flex-col  w-full box">
                             <span className="text-lg font-bold">Controls</span>
                             <div className="px-5 text-center align-center grid grid-cols-1 mx-auto gap-2">
+                                {showCode && <span className='font-mono'>{selfInfo.secret}</span>}
                                 <button
-                                    className="py-2 px-3 hover:bg-black dark:hover:bg-white dark:text-white dark:hover:text-black dark:border-white  hover:text-white rounded-md border-black border-2 text-black">Display
-                                    kill code
+                                    onClick={()=>setShowCode(!showCode)}
+                                    className="py-2 px-3 hover:bg-black dark:hover:bg-white dark:text-white dark:hover:text-black dark:border-white  hover:text-white rounded-md border-black border-2 text-black">
+                                    {showCode?'Hide':'Display'} kill code
                                 </button>
+                                {killSuccess && <SuccessAlert message={`${targetInfo.firstName} has been successfully eliminated! Good job!`}/>}
+                                {killError && <ErrorAlert message={killError}></ErrorAlert>}
+                                <TextBox onChange={(e)=>{setKillCode(e.target.value)}} placeholder={`Enter ${targetInfo.firstName}'s kill code`}/>
                                 <button
+                                    onClick={()=>eliminateTarget()}
                                     className="py-2 px-3 dark:bg-white dark:text-black rounded-md bg-black text-white">Kill {targetInfo.firstName}</button>
                             </div>
 
@@ -189,8 +221,13 @@ export default function Index() {
                     <span>Kill Feed</span>
                     <div className="flex flex-col">
                         {killFeed.map((item) => {
-                            return <div className="border-b-2 items-center last-of-type:border-b-0 border-white/10  px-3 flex flex-row gap-2 py-2 my-1">
-                                {new Date(item.at).toLocaleTimeString()} {new Date(item.at).toLocaleTimeString()} <Monogram small className={"shrink-0 "} user={item.entityUser}/> <span className={'font-semibold'}>{item.entityUser.firstName} {item.entityUser.lastName}</span>  {item.type}ed <Monogram small className='shrink-0' user={item.targetUser}/>  <span className={"font-semibold"}>{item.targetUser.firstName} {item.targetUser.lastName}</span>
+                            return <div
+                                className="border-b-2 items-center last-of-type:border-b-0 border-white/10  px-3 flex flex-row gap-2 py-2 my-1">
+                                {new Date(item.at).toLocaleTimeString()} {new Date(item.at).toLocaleTimeString()}
+                                <Monogram small className={"shrink-0 "} user={item.entityUser}/> <span
+                                className={'font-semibold'}>{item.entityUser.firstName} {item.entityUser.lastName}</span> {item.type}ed <Monogram
+                                small className='shrink-0' user={item.targetUser}/> <span
+                                className={"font-semibold"}>{item.targetUser.firstName} {item.targetUser.lastName}</span>
                             </div>
                         })}
                     </div>
