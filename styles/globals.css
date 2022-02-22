@@ -33,5 +33,5 @@
 }
 
 .box {
-  @apply bg-black/10 dark:bg-white/10 text-black dark:text-white flex flex-col gap-2 rounded-lg py-4 px-5;
+  @apply bg-gray-200 dark:bg-gray-800 text-black dark:text-white flex flex-col gap-2 rounded-lg py-4 px-5;
 }

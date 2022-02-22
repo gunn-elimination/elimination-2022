@@ -5,6 +5,7 @@ import { UserContext } from "../../helpers/usercontext";
 
 export default function Index() {
   const user = useContext(UserContext);
+  const router = useRouter()
   const [games, setGames] = useState([] as any[]);
   useEffect(() => {
       (async function () {
@@ -41,7 +42,7 @@ export default function Index() {
         })
     });
     if (response.status === 200){
-        
+        await router.push(`/app/game/${gameID}`)
     }
     else {
 

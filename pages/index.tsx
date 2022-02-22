@@ -150,7 +150,7 @@ export default function Home() {
                     >
                         <AppCard
                             name="Gunn.One"
-                            href="https://gunn.one"
+                            href="https://gunn.one/app/elimination"
                             icon="/apps/gunn-one.png"
                             img="/apps/disadus-dark.png"
                         >
