@@ -73,6 +73,18 @@ export default function Signup() {
         message: "You have already signed up. Finish creating your account by verifying your email!"
       })
     }
+    else if (responseText === "Email not whitelisted"){
+      setError({
+        valid: true,
+        message: "Please use your PAUSD email."
+      })
+    }
+    else if (responseText === "Email already exists"){
+      setError({
+        valid: true,
+        message: "It looks like you already have an account. Did you meant to login?"
+      })
+    }
     
   }, [email, password, password2, firstName, lastName]);
   return (
@@ -107,7 +119,7 @@ export default function Signup() {
             <TextBox
               className="w-full"
               type="email"
-              placeholder="Email"
+              placeholder="PAUSD Email"
               onInput={(v) => {
                 setEmail((v.target as HTMLInputElement).value);
               }}
