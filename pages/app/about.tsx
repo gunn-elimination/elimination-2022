@@ -1,15 +1,15 @@
 
 
 export default function About(){
-    return (<div className="h-full w-full bg-gray-100 dark:bg-gray-900 overflow-auto flex flex-col px-10 py-8">
-    <h1 className="text-3xl font-bold  mb-8">About</h1>
+    return (<div className="flex flex-col w-full h-full px-10 py-8 overflow-auto bg-gray-100 dark:bg-gray-900">
+    <h1 className="mb-8 text-3xl font-bold">About</h1>
         <div className={'flex flex-col'}>
-            <div className="box prose max-w-none prose-sm dark:prose-invert">
-                <h2 className="text-lg font-semibold mb-3">Rules</h2>
+            <div className="prose-sm prose box max-w-none dark:prose-invert">
+                <h2 className="mb-3 text-lg font-semibold">Rules</h2>
                 <details>
                     <summary className={'cursor-pointer'}>Click to expand rules</summary>
                     <ol >
-                        <li>At the beginning of the game  (3/1/22 12AM), each player will be assigned another player (target). Your mission is to eliminate your target by tagging them with a miniature stuffed plushie. After you eliminate your first target, you will get assigned your target's target. Eliminations are only valid under certain circumstances (see below). The game will end on 3/31 11:59 PM and whoever has the most kills by then wins!</li>
+                        <li>At the beginning of the game  (3/1/22 12AM), each player will be assigned another player (target). Your mission is to eliminate your target by tagging them with a miniature stuffed plushie. After you eliminate your first target, you will get assigned your target's target. Eliminations are only valid under certain circumstances (see below). The game will end on 3/31 11:59 PM and whoever has the most eliminations by then wins!</li>
                         <li>You MUST enter your real name when you join the game</li>
                         <li>The plushie MUST be visible at all times </li>
                         <li>You cannot be eliminated during a class period when you are marked present to that class and the bell has rung.</li>

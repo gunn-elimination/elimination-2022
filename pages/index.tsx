@@ -71,7 +71,7 @@ export default function Home() {
           leaveTo="opacity-0"
         >
           <p className="mb-6 text-lg md:text-base">
-            Welcome to Gunn Elimination, 2022. It's kill or be killed.
+            Welcome to Gunn Elimination, 2022. Eliminate others before they eliminate you!
           </p>
         </Transition>
 
