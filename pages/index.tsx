@@ -20,7 +20,7 @@ export default function Home() {
         name="Gunn.One"
         href="https://gunn.one/app/elimination"
         icon="/apps/gunn-one.png"
-        img="/apps/disadus-dark.png"
+        img="/apps/6FDDF687-BD89-4D99-9CF6-2D6272111977.jpeg"
         key={"gunn1"}
       >
         Everything at Gunn, all in One! No Schoology login required.
