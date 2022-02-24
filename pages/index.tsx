@@ -29,7 +29,8 @@ export default function Home() {
         name="Disadus"
         href="https://disadus.app/invites/gunn"
         icon="/apps/disadus.png"
-        img="/apps/disadus-dark.png"
+        img="/apps/disadus-light.png"
+        darkImg="/apps/disadus-dark.png"
         key={"disadus"}
       >
         Have you heard of Disadus? We have cute frogs!

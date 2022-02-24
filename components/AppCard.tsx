@@ -6,10 +6,11 @@ type AppCardProps = {
   href: string;
   icon: string;
   img?: string;
+  darkImg?: string;
   children: ReactNode;
 };
 export default function AppCard(props: AppCardProps) {
-  const { name, href, icon, img, children } = props;
+  const { name, href, icon, img, darkImg, children } = props;
 
   return (
     <Link href={href}>
@@ -22,7 +23,14 @@ export default function AppCard(props: AppCardProps) {
           <img
             src={img}
             alt={name}
-            className="mb-3 rounded-md outline outline-1 outline-gray-300/50"
+            className="mb-3 rounded-md outline outline-1 outline-gray-300/50 dark:hidden"
+          />
+        )}
+        {darkImg && (
+          <img
+            src={darkImg}
+            alt={name}
+            className="hidden mb-3 rounded-md outline outline-1 outline-gray-300/50 dark:block"
           />
         )}
         <p className={`text-center`}>{children}</p>
