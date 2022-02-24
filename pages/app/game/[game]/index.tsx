@@ -223,7 +223,7 @@ export default function Index() {
                         {killFeed.map((item) => {
                             return <div
                                 className="border-b-2 items-center last-of-type:border-b-0 border-white/10  px-3 flex flex-row gap-2 py-2 my-1">
-                                {new Date(item.at).toLocaleTimeString()} {new Date(item.at).toLocaleTimeString()}
+                                {new Date(item.at).toLocaleDateString()} {new Date(item.at).toLocaleTimeString()}
                                 <Monogram small className={"shrink-0 "} user={item.entityUser}/> <span
                                 className={'font-semibold'}>{item.entityUser.firstName} {item.entityUser.lastName}</span> {item.type}ed <Monogram
                                 small className='shrink-0' user={item.targetUser}/> <span
