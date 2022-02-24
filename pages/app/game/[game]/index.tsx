@@ -113,7 +113,7 @@ export default function Index() {
             {game.start ? <>
                 <div className="flex flex-row gap-1 p-1 mb-3 rounded-lg">
                     {
-                        [{name: "Dashboard", state: 0}, {name: "Kill Feed", state: 1}].map((item) => {
+                        [{name: "Dashboard", state: 0}, {name: "Elimination Feed", state: 1}].map((item) => {
                             return <a onClick={() => setPage(item.state)} href="#"
                                       className={`grow text-center basis-0 ${page === item.state ? 'btn-primary text-white' : 'text-black dark:bg-gray-800 dark:text-white bg-gray-200'} font-semibold  rounded-md px-3 py-2`}
                                       key={item.state}>{item.name}</a>
