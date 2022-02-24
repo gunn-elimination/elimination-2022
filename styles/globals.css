@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .hoverCard {
-  @apply basis-[20rem] dark:group-hover:brightness-[0.50] group-hover:blur-sm hover:!blur-none scale-90 hover:scale-100 hover:!brightness-100 hover:z-10 transition-all duration-300 hover:cursor-pointer pointer-events-auto;
+  @apply basis-[20rem]  scale-90  transition-all duration-300 cursor-pointer pointer-events-auto;
 }
 
 .brick {

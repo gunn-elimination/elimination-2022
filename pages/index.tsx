@@ -88,28 +88,9 @@ export default function Home() {
     </div>
 }
 
-                <Transition
-                    show={animate}
-                    enter="ease-out duration-[2000ms] delay-[2000ms]"
-                    enterFrom="opacity-0 -translate-y-full"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-500"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
                     <p className="mb-4">Alternatively, play on your Gunn Application of choice:</p>
-                </Transition>
+
                 <section className="flex flex-wrap justify-center pointer-events-none group">
-                    <Transition
-                        show={animate}
-                        enter="ease-out duration-700 delay-[2200ms] transition-all"
-                        enterFrom="opacity-0 scale-0 origin-top-left"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-700"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0 scale-0"
-                        className="hoverCard"
-                    >
                         <AppCard
                             name="Disadus"
                             href="https://disadus.app"
@@ -118,36 +99,18 @@ export default function Home() {
                         >
                             Have you heard of Disadus?
                         </AppCard>
-                    </Transition>
-                    <Transition
-                        show={animate}
-                        enter="ease-out duration-700 delay-[2700ms] transition-all"
-                        enterFrom="opacity-0 scale-0 origin-top"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-700"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0 scale-0"
-                        className="hoverCard"
-                    >
-                        <AppCard
+
+
+                    {false && <AppCard
                             name="WATT"
                             href="https://gunn.app"
                             icon="/apps/watt.png"
                             img="/apps/disadus-dark.png"
                         >
                             WATT is pretty cool. Use it!
-                        </AppCard>
-                    </Transition>
-                    <Transition
-                        show={animate}
-                        enter="ease-out duration-700 delay-[3200ms] transition-all"
-                        enterFrom="opacity-0 scale-0 origin-top-right"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-700"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0 scale-0"
-                        className="hoverCard"
-                    >
+                        </AppCard>}
+
+
                         <AppCard
                             name="Gunn.One"
                             href="https://gunn.one/app/elimination"
@@ -156,7 +119,7 @@ export default function Home() {
                         >
                             Everything at Gunn, all in One!
                         </AppCard>
-                    </Transition>
+
                 </section>
             </main >
         </div >
