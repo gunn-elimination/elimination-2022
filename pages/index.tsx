@@ -27,7 +27,7 @@ export default function Home() {
       </AppCard>,
       <AppCard
         name="Disadus"
-        href="https://disadus.app"
+        href="https://disadus.app/invites/gunn"
         icon="/apps/disadus.png"
         img="/apps/disadus-dark.png"
         key={"disadus"}
