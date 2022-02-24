@@ -91,6 +91,15 @@ export default function Home() {
                     <p className="mb-4">Alternatively, play on your Gunn Application of choice:</p>
 
                 <section className="flex flex-wrap justify-center pointer-events-none group">
+                    <AppCard
+                        name="Gunn.One"
+                        href="https://gunn.one/app/elimination"
+                        icon="/apps/gunn-one.png"
+                        img="/apps/disadus-dark.png"
+                    >
+                        Everything at Gunn, all in One! No login required.
+                    </AppCard>
+
                         <AppCard
                             name="Disadus"
                             href="https://disadus.app"
@@ -111,14 +120,7 @@ export default function Home() {
                         </AppCard>}
 
 
-                        <AppCard
-                            name="Gunn.One"
-                            href="https://gunn.one/app/elimination"
-                            icon="/apps/gunn-one.png"
-                            img="/apps/disadus-dark.png"
-                        >
-                            Everything at Gunn, all in One!
-                        </AppCard>
+
 
                 </section>
             </main >
