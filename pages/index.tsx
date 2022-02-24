@@ -1,4 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Head from "next/head";
 import { Transition } from "@headlessui/react";
 import AppCard from "../components/AppCard";
@@ -7,6 +13,32 @@ import { UserContext } from "../helpers/usercontext";
 export default function Home() {
   const [animate, setAnimate] = useState(false);
   const user = useContext(UserContext);
+  const items = useRef([] as any[]);
+  useLayoutEffect(() => {
+    const cards = [
+      <AppCard
+        name="Gunn.One"
+        href="https://gunn.one/app/elimination"
+        icon="/apps/gunn-one.png"
+        img="/apps/disadus-dark.png"
+        key={"gunn1"}
+      >
+        Everything at Gunn, all in One! No Schoology login required.
+      </AppCard>,
+      <AppCard
+        name="Disadus"
+        href="https://disadus.app"
+        icon="/apps/disadus.png"
+        img="/apps/disadus-dark.png"
+        key={"disadus"}
+      >
+        Have you heard of Disadus? We have cute frogs!
+      </AppCard>,
+    ];
+    // shuffle the cards
+    const shuffled = Math.random() < 0.5 ? cards : cards.reverse();
+    items.current = shuffled;
+  }, []);
   // Is there a better way to do this?
   useEffect(() => {
     setAnimate(true);
@@ -93,23 +125,7 @@ export default function Home() {
         </p>
 
         <section className="flex flex-wrap justify-center pointer-events-none group">
-          <AppCard
-            name="Gunn.One"
-            href="https://gunn.one/app/elimination"
-            icon="/apps/gunn-one.png"
-            img="/apps/disadus-dark.png"
-          >
-            Everything at Gunn, all in One! No Schoology login required
-          </AppCard>
-
-          <AppCard
-            name="Disadus"
-            href="https://disadus.app"
-            icon="/apps/disadus.png"
-            img="/apps/disadus-dark.png"
-          >
-            Have you heard of Disadus? We have cute frogs.
-          </AppCard>
+          {items.current}
         </section>
       </main>
     </div>
