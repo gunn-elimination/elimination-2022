@@ -16,10 +16,10 @@ export default function sidebar() {
             }
         },
         {
-            name: 'Settings',
-            path: '/app/settings',
+            name: 'About',
+            path: '/app/about',
             isValid(path:string){
-                return path.startsWith('/app/settings');
+                return path.startsWith('/app/about');
             }
         }
     ]
