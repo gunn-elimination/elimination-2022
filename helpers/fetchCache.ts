@@ -4,7 +4,21 @@ import {API_DOMAIN} from "./constants";
 export function getUserProfile(uid: string, gameId: string | null = null): Promise<Record<string, any>> {
 
     return new Promise(async (resolve, reject) => {
-        let userCache: IDBObjectStore;
+        const user = await fetch(`${API_DOMAIN}/users/${uid}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(e => e.json());
+        if (gameId) {
+            Object.assign(user, await fetch(`${API_DOMAIN}/elimination/game/${gameId}/user/${uid}`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(e => e.json()));
+        }
+        resolve(user);
+
+        /*let userCache: IDBObjectStore;
         let db: IDBDatabase;
         const req: IDBOpenDBRequest = window.indexedDB.open("EliminationDB", 1)
 
@@ -52,7 +66,7 @@ export function getUserProfile(uid: string, gameId: string | null = null): Promi
                 }).then(e => e.json()));
             }
             resolve(user);
-        }
+        }*/
     });
 
 }
