@@ -40,7 +40,8 @@ export default function Index() {
       const aR = await fetch(
         `${API_DOMAIN}/game/${router.query.game}/announcements`
       );
-      setA((await aR.json())[0]);
+      const announcements = await aR.json();
+      setA(announcements.sort((a: any, b: any) => b.time - a.time)[0]);
       const selfResp = await fetch(
         `${API_DOMAIN}/elimination/game/${router.query.game}/user/@me/`,
         {
@@ -140,7 +141,7 @@ export default function Index() {
     }
   }, [user, targetInfo, killCode]);
   return (
-    <div className="flex flex-col w-full h-full px-10 pt-12 pb-8 overflow-auto">
+    <div className="flex flex-col w-full h-full px-10 pt-12 pb-8 overflow-auto whitespace-pre-wrap ">
       <h1 className="mb-8 text-3xl font-bold">{game.name}</h1>
 
       {game.start ? (
