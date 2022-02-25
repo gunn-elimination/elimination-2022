@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-full px-5 overflow-auto brick">
-      <main className="pt-24 text-center">
+      <main className="py-24 text-center">
         <Transition
           show={animate}
           enter="ease-out duration-500 delay-300"
@@ -75,59 +75,23 @@ export default function Home() {
           </p>
         </Transition>
 
-        {user ? (
-          <div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
-            <Transition
-              show={animate}
-              enter="ease-out duration-500 delay-[1800ms]"
-              enterFrom="opacity-0 scale-0 -translate-y-full"
-              enterTo="opacity-100"
-              leave="ease-in duration-500"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0 scale-0"
-            >
-              <a href="/app" className="btn-primary">
-                Play
-              </a>
-            </Transition>
-          </div>
-        ) : (
-          <div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
-            <Transition
-              show={animate}
-              enter="ease-out duration-500 delay-[1800ms]"
-              enterFrom="opacity-0 scale-0 -translate-y-full"
-              enterTo="opacity-100"
-              leave="ease-in duration-500"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0 scale-0"
-            >
-              <a href="/signup" className="btn-primary">
-                Sign up
-              </a>
-            </Transition>
 
-            <Transition
-              show={animate}
-              enter="ease-out duration-500 delay-[1800ms]"
-              enterFrom="opacity-0 scale-0 -translate-y-full"
-              enterTo="opacity-100"
-              leave="ease-in duration-500"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0 scale-0"
-            >
-              <a href="/login">Log in</a>
-            </Transition>
-          </div>
-        )}
 
-        <p className="mb-4">
-          Alternatively, play on your Gunn Application of choice:
-        </p>
+
 
         <section className="flex flex-wrap justify-center pointer-events-none group">
           {items.current}
         </section>
+        <div className="flex justify-center ">
+          <div className="h-full mt-3 max-w-sm p-4 text-left text-black transition-shadow duration-150 ease-in-out bg-white rounded-lg shadow-lg dark:bg-zinc-800 dark:text-white hover:shadow-xl flex flex-col gap-2">
+            <span className="text-xl font-semibold">Standalone</span>
+            <p className="text-sm">Don't want the conveniences of a schedule app? Play using the standalone application!</p>
+            <a className="btn-primary-outline btn-sm mt-2">Play with Standalone</a>
+          </div>
+        </div>
+
+
+
       </main>
     </div>
   );
