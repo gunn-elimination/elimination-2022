@@ -23,7 +23,7 @@ export default function AppCard(props: AppCardProps) {
           <img
             src={img}
             alt={name}
-            className={`mb-3 rounded-md outline outline-1 outline-gray-300/50 ${darkImg && `dark:hidden`}`}
+            className={`my-auto rounded-md outline outline-1 outline-gray-300/50 ${darkImg && `dark:hidden`}`}
           />
         )}
         {darkImg && (
@@ -33,8 +33,8 @@ export default function AppCard(props: AppCardProps) {
             className="hidden mb-3 rounded-md outline outline-1 outline-gray-300/50 dark:block"
           />
         )}
-        <p className={`text-center`}>{children}</p>
-        <button className="mt-2 btn-primary">Play with {name}</button>
+        <p className={`text-center my-auto`}>{children}</p>
+        <button className="mt-2 mb-0 btn-primary">Play with {name}</button>
       </div>
     </Link>
   );

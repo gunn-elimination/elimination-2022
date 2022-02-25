@@ -20,7 +20,7 @@ export default function Home() {
         name="Gunn.One"
         href="https://gunn.one/app/elimination"
         icon="/apps/gunn-one.png"
-        img="/apps/6FDDF687-BD89-4D99-9CF6-2D6272111977.jpeg"
+        img="/apps/gunn-one-light.jpeg"
         key={"gunn1"}
       >
         Everything at Gunn, all in One! No Schoology login required.
@@ -46,8 +46,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-full px-5 overflow-auto brick">
-      <main className="py-24 text-center">
+    <div className="w-full h-full flex flex-col px-5 overflow-auto brick">
+      <main className="pt-24 text-center">
         <Transition
           show={animate}
           enter="ease-out duration-500 delay-300"
@@ -71,24 +71,62 @@ export default function Home() {
           leaveTo="opacity-0"
         >
           <p className="mb-6 text-lg md:text-base">
-            Welcome to Gunn Elimination, 2022. Eliminate others before they
-            eliminate you!
+            Welcome to Gunn Elimination, 2022. Eliminate others before they eliminate you!
           </p>
         </Transition>
-        <section className="flex flex-wrap items-end justify-center pointer-events-none group">
-          {items.current[0]}
-          <AppCard
-            name="Standalone"
-            href="/login"
-            icon="/favicon.png"
-            img="/apps/sa-light.png"
-            darkImg="/apps/sa-dark.png"
-            key={"sa"}
-          >
-            Don't want the conveniences of a schedule app? Play using the
-            standalone application!
-          </AppCard>
-          {items.current[1]}
+
+        {user ? (
+          <div className="flex items-center justify-center gap-4 mb-16 text-xl font-bold">
+            <Transition
+              show={animate}
+              enter="ease-out duration-500 delay-[1800ms]"
+              enterFrom="opacity-0 scale-0 -translate-y-full"
+              enterTo="opacity-100"
+              leave="ease-in duration-500"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0 scale-0"
+            >
+              <a href="/app" className="btn-primary">
+                Play
+              </a>
+            </Transition>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center gap-4 mb-6 text-xl font-bold">
+            <Transition
+              show={animate}
+              enter="ease-out duration-500 delay-[1800ms]"
+              enterFrom="opacity-0 scale-0 -translate-y-full"
+              enterTo="opacity-100"
+              leave="ease-in duration-500"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0 scale-0"
+            >
+              <a href="/signup" className="btn-primary">
+                Sign up
+              </a>
+            </Transition>
+
+            <Transition
+              show={animate}
+              enter="ease-out duration-500 delay-[1800ms]"
+              enterFrom="opacity-0 scale-0 -translate-y-full"
+              enterTo="opacity-100"
+              leave="ease-in duration-500"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0 scale-0"
+            >
+              <a href="/login">Log in</a>
+            </Transition>
+          </div>
+        )}
+
+        <p className="mb-4">
+          Alternatively, play on your Gunn Application of choice:
+        </p>
+
+        <section className="grid grid-cols-2 sm:grid-cols-1 max-w-3xl sm:max-w-none mx-auto justify-center pointer-events-none group">
+          {items.current}
         </section>
       </main>
     </div>
