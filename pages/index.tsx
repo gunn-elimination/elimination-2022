@@ -71,27 +71,25 @@ export default function Home() {
           leaveTo="opacity-0"
         >
           <p className="mb-6 text-lg md:text-base">
-            Welcome to Gunn Elimination, 2022. Eliminate others before they eliminate you!
+            Welcome to Gunn Elimination, 2022. Eliminate others before they
+            eliminate you!
           </p>
         </Transition>
-
-
-
-
-
-        <section className="flex flex-wrap justify-center pointer-events-none group">
-          {items.current}
+        <section className="flex flex-wrap items-end justify-center pointer-events-none group">
+          {items.current[0]}
+          <AppCard
+            name="Standalone"
+            href="/login"
+            icon="/favicon.png"
+            img="/apps/sa-light.png"
+            darkImg="/apps/sa-dark.png"
+            key={"sa"}
+          >
+            Don't want the conveniences of a schedule app? Play using the
+            standalone application!
+          </AppCard>
+          {items.current[1]}
         </section>
-        <div className="flex justify-center ">
-          <div className="h-full mt-3 max-w-sm p-4 text-left text-black transition-shadow duration-150 ease-in-out bg-white rounded-lg shadow-lg dark:bg-zinc-800 dark:text-white hover:shadow-xl flex flex-col gap-2">
-            <span className="text-xl font-semibold">Standalone</span>
-            <p className="text-sm">Don't want the conveniences of a schedule app? Play using the standalone application!</p>
-            <a className="btn-primary-outline btn-sm mt-2">Play with Standalone</a>
-          </div>
-        </div>
-
-
-
       </main>
     </div>
   );
