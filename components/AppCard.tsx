@@ -23,7 +23,7 @@ export default function AppCard(props: AppCardProps) {
           <img
             src={img}
             alt={name}
-            className={`my-auto rounded-md outline outline-1 outline-gray-300/50 ${darkImg && `dark:hidden`}`}
+            className={`my-auto rounded-md outline outline-1 outline-gray-300/50 ${darkImg && `dark:hidden`} `}
           />
         )}
         {darkImg && (
