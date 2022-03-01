@@ -70,7 +70,7 @@ export default function Home() {
           leaveTo="opacity-0"
         >
           <p className="mb-6 text-lg md:text-base">
-             Eliminate or be eliminated. Do you have what it takes to win?
+            Eliminate or be eliminated. Do you have what it takes to win?
           </p>
         </Transition>
 
@@ -120,13 +120,13 @@ export default function Home() {
           </div>
         )}
 
-        <p className="mb-4">
+        {/* <p className="mb-4">
           Alternatively, play on your Gunn Application of choice:
         </p>
 
         <section className="grid justify-center max-w-3xl grid-cols-2 mx-auto pointer-events-none sm:grid-cols-1 sm:max-w-none group">
           {items.current}
-        </section>
+        </section> */}
       </main>
     </div>
   );
