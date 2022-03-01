@@ -26,6 +26,8 @@ export default function Index() {
   const [killSuccess, setKillSuccess] = useState(false);
   const [killFeed, setKillFeed] = useState([] as Array<Record<string, any>>);
   const [a, setA] = useState(null as null | Record<string, any>);
+  const [forceKillUsername, setForceKillUsername] = useState("");
+  const [reviveUsername, setReviveUsername] = useState("");
   useEffect(() => {
     if (!router.query.game) return;
     // fetch game information: such as name/description/basic stuff
@@ -42,6 +44,7 @@ export default function Index() {
       );
       const announcements = await aR.json();
       setA(announcements.sort((a: any, b: any) => b.time - a.time)[0]);
+      console.log(announcements);
       const selfResp = await fetch(
         `${API_DOMAIN}/elimination/game/${router.query.game}/user/@me/`,
         {
@@ -118,7 +121,7 @@ export default function Index() {
         );
       }
     })();
-  }, [router]);
+  }, [router.query]);
   const eliminateTarget = useCallback(async () => {
     const response = await fetch(
       `${API_DOMAIN}/elimination/game/${router.query.game}/user/${targetInfo.userID}/eliminate`,
@@ -140,6 +143,14 @@ export default function Index() {
       setKillError((await response.json()).error);
     }
   }, [user, targetInfo, killCode]);
+  // { name: "Elimination Feed", state: 1 },
+  const tabs = [
+    { name: "Dashboard", state: 0 },
+    { name: "Elimination Feed", state: 1 },
+  ];
+  if (user?.admin) {
+    tabs.push({ name: "Admin", state: 2 });
+  }
   return (
     <div className="flex flex-col w-full h-full px-10 pt-12 pb-8 overflow-auto whitespace-pre-wrap ">
       <h1 className="mb-8 text-3xl font-bold">{game.name}</h1>
@@ -147,10 +158,7 @@ export default function Index() {
       {game.start ? (
         <>
           <div className="flex flex-row gap-1 p-1 mb-3 rounded-lg">
-            {[
-              { name: "Dashboard", state: 0 },
-              { name: "Elimination Feed", state: 1 },
-            ].map((item) => {
+            {tabs.map((item) => {
               return (
                 <a
                   onClick={() => setPage(item.state)}
@@ -285,7 +293,7 @@ export default function Index() {
                       <span className="text-lg font-bold">
                         {selfInfo.kills}
                       </span>
-                      <span>eliminate</span>
+                      <span>eliminations</span>
                     </div>
                     <div className="flex flex-col text-center">
                       <span className="text-lg font-bold">
@@ -359,6 +367,170 @@ export default function Index() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+          <div className={`${page === 2 ? "block" : "hidden"} h-full w-full`}>
+            <div className={"box"}>
+              <span>Admin Panel</span>
+              <div className="flex flex-col gap-4">
+                <div className={`max-w-md`}>
+                  <span className="text-lg font-bold">Force Kill</span>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-sm font-semibold">
+                      Enter a user's username
+                    </span>
+                    <TextBox
+                      onChange={(e) => {
+                        setForceKillUsername(e.target.value);
+                      }}
+                      placeholder="Enter a user's username (eg. JL38768)"
+                    />
+                    <button
+                      onClick={() => {
+                        fetch(
+                          `${API_DOMAIN}/elimination/game/${router.query.game}/user/${forceKillUsername}/eliminate?force=true`,
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${localStorage.getItem(
+                                "token"
+                              )}`,
+                            },
+                            body: JSON.stringify({
+                              eliminationCode: "Hello",
+                            }),
+                          }
+                        ).then((x) => {
+                          if (x.ok) {
+                            alert("User has been killed");
+                            location.reload();
+                          } else alert("User could not be killed");
+                        });
+                      }}
+                      className="px-3 py-2 text-white bg-black rounded-md dark:bg-white dark:text-black"
+                    >
+                      Force Kill
+                    </button>
+                  </div>
+                </div>
+                <div className={`max-w-md`}>
+                  <span className="text-lg font-bold">Revive</span>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-sm font-semibold">
+                      Enter a user's username
+                    </span>
+                    <TextBox
+                      onChange={(e) => {
+                        setForceKillUsername(e.target.value);
+                      }}
+                      placeholder="Enter a user's username (eg. JL38768)"
+                    />
+                    <button
+                      onClick={() => {
+                        fetch(
+                          `${API_DOMAIN}/elimination/game/${router.query.game}/user/${forceKillUsername}/resurrect`,
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${localStorage.getItem(
+                                "token"
+                              )}`,
+                            },
+                          }
+                        ).then((x) => {
+                          if (x.ok) {
+                            alert("User has been revived");
+                            location.reload();
+                          } else alert("User could not be revived");
+                        });
+                      }}
+                      className="px-3 py-2 text-white bg-black rounded-md dark:bg-white dark:text-black"
+                    >
+                      Revive
+                    </button>
+                  </div>
+                </div>
+                <div className={`max-w-md`}>
+                  <span className="text-lg font-bold">Shuffle Targets</span>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-sm font-semibold">
+                      Shuffle targets for all users
+                    </span>
+                    <button
+                      onClick={() => {
+                        fetch(
+                          `${API_DOMAIN}/elimination/game/${router.query.game}/shuffle`,
+                          {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${localStorage.getItem(
+                                "token"
+                              )}`,
+                            },
+                          }
+                        ).then((x) => {
+                          if (x.ok) {
+                            alert("Targets have been shuffled");
+                            location.reload();
+                          } else alert("Targets could not be shuffled");
+                        });
+                      }}
+                      className="px-3 py-2 text-white bg-black rounded-md dark:bg-white dark:text-black"
+                    >
+                      Shuffle
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <span className="text-lg font-bold">
+                    Create New Announcement
+                  </span>
+                  <textarea
+                    className="w-full h-32 p-4 rounded-lg resize-none dark:bg-gray-900"
+                    id="announcementField"
+                  />
+                  <button
+                    onClick={() => {
+                      fetch(
+                        `${API_DOMAIN}/game/${router.query.game}/announcements`,
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem(
+                              "token"
+                            )}`,
+                          },
+                          body: JSON.stringify({
+                            message: (document.getElementById(
+                              "announcementField"
+                            ) as HTMLTextAreaElement)!.value,
+                          }),
+                        }
+                      ).then(async () => {
+                        const aR = await fetch(
+                          `${API_DOMAIN}/game/${router.query.game}/announcements`
+                        );
+                        const announcements = await aR.json();
+                        setA(
+                          announcements.sort(
+                            (a: any, b: any) => b.time - a.time
+                          )[0]
+                        );
+                        (document.getElementById(
+                          "announcementField"
+                        ) as HTMLTextAreaElement)!.value = "";
+                      });
+                    }}
+                    className="px-3 py-2 text-white bg-black rounded-md dark:bg-white dark:text-black"
+                  >
+                    Create
+                  </button>
+                </div>
               </div>
             </div>
           </div>
