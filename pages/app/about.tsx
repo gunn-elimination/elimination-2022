@@ -21,7 +21,7 @@ export default function About(){
                         <li>This includes sports not affiliated with Gunn (i.e. playing basketball or working out)</li>
                         <li>You cannot be eliminated until after you have exited the athletic facility. </li>
                         <li>You are safe while in the locker room</li>
-                        <li>You cannot be eliminated in the shower or in a stall</li>
+                        <li>You cannot be eliminated in the shower or in a stall or using the restroom</li>
                         <li>You cannot be eliminated while driving a car or riding a bike</li>
                         <li>You cannot be eliminated during Prime and while checked into a classroom or marked present, even if you are going to the bathroom.</li>
                         <li>You cannot be eliminated while making up work for a teacher, even if not during Office Hours/Prime or class times.</li>
