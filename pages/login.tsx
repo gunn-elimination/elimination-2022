@@ -81,7 +81,11 @@ export default function Login() {
           <button onClick={submit} className="btn-primary mt-1">
             Log In
           </button>
-          <span className="dark:text-white/60 text-black/60 italic text-sm">Don't have an account? <a className="link-brand" href="/signup">Sign up.</a></span>
+         <div>
+           <p className="dark:text-white/60 text-black/60 italic text-sm">Don't have an account? <a className="link-brand" href="/signup">Sign up.</a></p>
+           <p className="dark:text-white/60 text-black/60 italic text-sm"><a className="link-brand" href="/forgot-password">Forgot password?</a></p>
+
+         </div>
         </div>
       </div>
     </div>
