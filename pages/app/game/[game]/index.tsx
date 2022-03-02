@@ -51,7 +51,7 @@ export default function Index() {
             }
 
             // fetching leaderboard stuff
-            const lResp = await fetch(`${API_DOMAIN}/elimination/game/${router.query.game}/top`, {
+            const lResp = await fetch(`${API_DOMAIN}/elimination/game/${router.query.game}/top?limit=75`, {
                 headers: new Headers({
                     'content-type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
