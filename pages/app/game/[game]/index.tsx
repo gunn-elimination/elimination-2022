@@ -243,6 +243,38 @@ export default function Index() {
                     </div>
                   </div>
                 </div>
+                <div className="flex flex-col w-full box">
+                  <span className="text-lg font-bold">Controls</span>
+                  <div className="grid grid-cols-1 gap-2 px-5 mx-auto text-center align-center">
+                    {showCode && (
+                      <span className="font-mono">{selfInfo.secret}</span>
+                    )}
+                    <button
+                      onClick={() => setShowCode(!showCode)}
+                      className="px-3 py-2 text-black border-2 border-black rounded-md hover:bg-black dark:hover:bg-white dark:text-white dark:hover:text-black dark:border-white hover:text-white"
+                    >
+                      {showCode ? "Hide" : "Display"} elimination code
+                    </button>
+                    {killSuccess && (
+                      <SuccessAlert
+                        message={`${targetInfo.firstName} has been successfully eliminated! Good job!`}
+                      />
+                    )}
+                    {killError && <ErrorAlert message={killError}></ErrorAlert>}
+                    <TextBox
+                      onChange={(e) => {
+                        setKillCode(e.target.value);
+                      }}
+                      placeholder={`Enter ${targetInfo.firstName}'s elimination code`}
+                    />
+                    <button
+                      onClick={() => eliminateTarget()}
+                      className="px-3 py-2 text-white bg-black rounded-md dark:bg-white dark:text-black"
+                    >
+                      Eliminate {targetInfo.firstName}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
