@@ -6,7 +6,8 @@ export const useCurrentUser = () => {
   useEffect(() => {
     const data = localStorage.getItem("currentUser");
     if (data) setuser(JSON.parse(data) as User);
-    fetch("https://api.gunnelimination.com/users/@me/", {
+    const token = localStorage.getItem('token');
+    if (token) fetch("https://api.gunnelimination.com/users/@me/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

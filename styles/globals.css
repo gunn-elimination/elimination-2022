@@ -17,7 +17,11 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .btn-primary {
-  @apply px-4 py-2 font-bold text-white transition transition-shadow duration-100 ease-in-out rounded-md shadow-lg bg-gradient-to-br from-red-500 via-red-500 to-pink-600 shadow-red-700/40 hover:shadow-xl hover:shadow-red-700/40;
+  @apply px-4 py-2 text-center font-bold text-white transition transition-shadow duration-100 ease-in-out rounded-md shadow-lg bg-gradient-to-br from-red-500 via-red-500 to-pink-600 shadow-red-700/40 hover:shadow-xl hover:shadow-red-700/40;
+}
+
+.btn-primary-outline.btn-sm {
+  @apply px-3 py-2 font-semibold text-sm border-rose-500 border-2 text-transparent text-center transition-shadow duration-100 ease-in-out bg-clip-text rounded-md shadow-sm bg-gradient-to-br from-red-500 via-red-500 to-pink-600 shadow-red-700/40 hover:shadow-md hover:shadow-red-700/40;
 }
 
 .bg-brand {
